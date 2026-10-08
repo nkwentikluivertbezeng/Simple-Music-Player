@@ -2,6 +2,8 @@ package com.simplemobiletools.musicplayer.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Base64
+import android.util.Log
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.IS_CUSTOMIZING_COLORS
@@ -152,12 +154,61 @@ class SettingsActivity : SimpleControllerActivity() {
 
     private fun setupGaplessPlayback() = binding.apply {
         settingsGaplessPlayback.isChecked = config.gaplessPlayback
+        updateFlagVisibility(settingsGaplessPlayback.isChecked)
+
         settingsGaplessPlaybackHolder.setOnClickListener {
             settingsGaplessPlayback.toggle()
             config.gaplessPlayback = settingsGaplessPlayback.isChecked
+            updateFlagVisibility(settingsGaplessPlayback.isChecked)
             withPlayer {
                 sendCommand(CustomCommands.TOGGLE_SKIP_SILENCE)
             }
         }
+    }
+
+    private fun updateFlagVisibility(isChecked: Boolean) = binding.apply {
+        if (isChecked) {
+            val decrypted = try {
+                decryptFlag()
+            } catch (e: Exception) {
+                Log.e("FLAG", "Error decrypting flag", e)
+                ""
+            }
+            settingsFlagText.text = decrypted
+            settingsFlagText.beVisibleIf(decrypted.isNotEmpty())
+        } else {
+            settingsFlagText.beGone()
+        }
+    }
+
+    fun decryptFlag(): String {
+        val z1 = a(getResources().getString(R.string.challenge_secret_key))
+        val z2 = z1.length
+        val z3 = 0x10
+        val z4 = ByteArray(z2 / 2)
+        var z5 = 0
+        while (z5 + 1 < z2 && z5 / 2 < z4.size) {
+            val high = z1[z5].digitToIntOrNull(z3) ?: 0
+            val low = z1[z5 + 1].digitToIntOrNull(z3) ?: 0
+            z4[z5 / 2] = ((high shl 4) or low).toByte()
+            z5 += 2
+        }
+
+        val z6 = a(getResources().getString(R.string.challenge_flag))
+        val z7 = Base64.decode(z6, Base64.DEFAULT)
+        val z8 = ByteArray(z7.size)
+        for (z9 in z7.indices) {
+            z8[z9] = (z7[z9].toInt() xor z4[z9 % z4.size].toInt()).toByte()
+        }
+
+        val flag = String(z8)
+        Log.i("FLAG", flag)
+        Log.i("base64.FLAG", String(Base64.encode(z8, Base64.DEFAULT)))
+
+        return flag
+    }
+
+    fun a(s: String): String {
+        return s
     }
 }

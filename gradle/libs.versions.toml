@@ -36,6 +36,12 @@ shortcut-badger = "1.1.22"
 app-version-appId = "com.simplemobiletools.musicplayer"
 app-version-versionCode = "119"
 app-version-versionName = "5.18.3"
+appcompat = "1.6.1"
+material = "1.11.0"
+annotation = "1.6.0"
+activityKtx = "1.8.2"
+lifecycleLivedataKtx = "2.6.2"
+lifecycleViewmodelKtx = "2.6.2"
 [libraries]
 #AndroidX
 androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "androidx-constraintlayout" }
@@ -58,6 +64,12 @@ jaudiotagger = { module = "net.jthink:jaudiotagger", version.ref = "jaudiotagger
 lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
 autofittextview = { module = "me.grantland:autofittextview", version.ref = "autofittextview" }
 m3u-parser = { module = "com.github.bjoernpetersen:m3u-parser", version.ref = "m3uParser" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+androidx-annotation = { group = "androidx.annotation", name = "annotation", version.ref = "annotation" }
+androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activityKtx" }
+androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtx" }
+androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
 [bundles]
 room = [
     "androidx-room-ktx",

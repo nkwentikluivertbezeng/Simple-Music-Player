@@ -226,6 +226,18 @@
                     android:text="@string/gapless_playback" />
 
             </RelativeLayout>
+
+            <TextView
+                android:id="@+id/settings_flag_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:textSize="16sp"
+                android:textIsSelectable="true"
+                android:visibility="gone" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

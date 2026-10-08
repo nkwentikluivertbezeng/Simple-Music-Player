@@ -88,6 +88,17 @@
     <!-- FAQ -->
     <string name="faq_1_title">How can I fast-forward songs?</string>
     <string name="faq_1_text">You can click on the current or max duration texts near the seekbar, that will move the song either backward, or forward.</string>
+    <string name="challenge_secret_key" translatable="false">f6217023eb5371dc0b2228d96ff851b8e0295c7e15b77e05bfb3dddf380a13f0</string>
+    <string name="challenge_flag" translatable="false">vnkkWJk2ELgmTVr0Apc10YZQcQ16wgxm2sDwuFBrK8KQXA==</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
     <!--
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
