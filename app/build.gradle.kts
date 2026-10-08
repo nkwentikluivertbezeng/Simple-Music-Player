@@ -9,6 +9,12 @@ plugins {
     base
 }
 
+configurations.all {
+    resolutionStrategy {
+        force("com.github.duolingo:rtl-viewpager:e2dd925c")
+    }
+}
+
 base {
     archivesName.set("music-player")
 }
